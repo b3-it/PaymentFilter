@@ -97,8 +97,11 @@ class RicoNeitzel_PaymentFilter_Model_Observer extends Mage_Core_Model_Abstract
         /*
          * Serialize array for saving
          */
-        $val = serialize($group->getAllowedPaymentMethods());
-        $group->setAllowedPaymentMethods($val);
+        if($group->getAllowedPaymentMethods()) {
+            $val = serialize($group->getAllowedPaymentMethods());
+            $group->setAllowedPaymentMethods($val);
+        }
+
     }
 
     /**
@@ -164,12 +167,16 @@ class RicoNeitzel_PaymentFilter_Model_Observer extends Mage_Core_Model_Abstract
          */
         if ($checkResult->isAvailable) {
             $allowedPaymentMethodsForGroup = Mage::helper('payfilter')->getAllowedPaymentMethodsForCurrentGroup();
-            $allowedPaymentMethodsForCustomer = Mage::helper('payfilter')->getAllowedPaymentMethodsForCustomer();
+            $allowedPaymentMethodsForCustomer = Mage::helper('payfilter')->getAllowedPaymentMethodsForCustomer();            
             $allowedPaymentMethods = array_merge($allowedPaymentMethodsForCustomer, $allowedPaymentMethodsForGroup);
+
             if (!in_array($method->getCode(), $allowedPaymentMethods)) {
                 $checkResult->isAvailable = false;
             }
+
+
         }
+
     }
 }
 

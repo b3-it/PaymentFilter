@@ -136,7 +136,11 @@ class RicoNeitzel_PaymentFilter_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function getAllowedPaymentMethodsForCustomer()
     {
-        return (array)$this->getCurrentCustomer()->getAllowedPaymentMethods();
+        $allowedPaymentMethods = $this->getCurrentCustomer()->getAllowedPaymentMethods();  //allowed payment methods is saved comma-separated string
+        if(is_string($allowedPaymentMethods)) {
+            $allowedPaymentMethods = explode(',', $allowedPaymentMethods);
+        }
+        return (array)$allowedPaymentMethods;
     }
 
     /**
