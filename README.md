@@ -6,7 +6,7 @@ products. A customer can only use the payment methods during checkout
 available to his (customer group OR himself) AND not disabled for the products in the
 shopping cart.
 
-This extension supports Magento 1.3 through 1.9. 
+This extension supports Magento 1.3 through 1.9 and OpenMage through 20.x
 
 It was created by Vinai Kopp http://netzarbeiter.com/ for Rico Neitzel
 (http://buro71a.de/).
