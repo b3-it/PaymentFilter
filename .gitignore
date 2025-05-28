@@ -47,4 +47,6 @@ fabric.properties
 
 .idea
 
-
+#composer
+/vendor
+composer.lock
