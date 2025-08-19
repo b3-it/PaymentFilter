@@ -1,4 +1,4 @@
-# This is the Readme for the Magento extension PaymentFilter.
+# This is the Readme for the OpenMage (Magento 1.x) extension PaymentFilter.
 
 This module enables you to select which payment methods are available for
 every customer and customer group. Also, Payment methods can be disabled for specific
