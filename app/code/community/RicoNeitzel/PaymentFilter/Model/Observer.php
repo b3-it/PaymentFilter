@@ -131,9 +131,17 @@ class RicoNeitzel_PaymentFilter_Model_Observer extends Mage_Core_Model_Abstract
             return;
         }
 
+        $request = Mage::app()->getRequest();
+        if ($request->getRouteName() !== "adminhtml"
+            || $request->getControllerName() !== "catalog_product"
+            || $request->getActionName() !== "save") {
+            return;
+        }
+
         $product = $observer->getEvent()->getProduct();
-        $params = Mage::app()->getRequest()->getParam('product');
-        if (!isset($params['product_payment_methods'])) {
+        $params = $request->getParam('product');
+        $useDefault = $request->getPost('use_default');
+        if (!isset($params['product_payment_methods']) && !(isset($useDefault) && in_array('product_payment_methods', $useDefault))) {
             $product->setProductPaymentMethods(array());
         }
     }
