@@ -99,7 +99,7 @@ class RicoNeitzel_PaymentFilter_Block_Adminhtml_Group_Form extends Mage_Adminhtm
                 'value' => '1',
             ));
 
-            $fieldset->addField('payment_methods', 'multiselect', array(
+            $fieldset->addField('allowed_payment_methods', 'multiselect', array(
                 'name' => 'allowed_payment_methods',
                 'label' => Mage::helper('payfilter')->__('Payment Methods'),
                 'title' => Mage::helper('payfilter')->__('Payment Methods'),
